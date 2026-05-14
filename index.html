@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="nofollow" /> 
+  <title>Alex Metzger — AI Developer</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ══════════════════════════════
+       IDE CHROME — title bar & tabs
+  ══════════════════════════════ -->
+  <div id="titlebar">
+    <div class="tb-dots">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+    <div class="tb-tabs" id="tbTabs">
+      <button class="tab active" data-target="panel-home">
+        <span class="tab-icon">◉</span> about.me
+      </button>
+      <button class="tab" data-target="panel-projects">
+        <span class="tab-icon">◈</span> projects/
+      </button>
+      <button class="tab" data-target="panel-skills">
+        <span class="tab-icon">◇</span> skills
+      </button>
+      <button class="tab" data-target="panel-contact">
+        <span class="tab-icon">◎</span> contact
+      </button>
+    </div>
+    <div class="tb-right">
+      <a href="AlexMetzgerResume-2025.pdf" target="_blank" class="resume-pill">↓ resume.pdf</a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       MAIN BODY — sidebar + content
+  ══════════════════════════════ -->
+  <div id="workspace">
+
+    <!-- LEFT SIDEBAR: VS Code file explorer -->
+    <aside id="sidebar">
+
+      <div class="sb-section">
+        <div class="sb-label">EXPLORER</div>
+        <div class="sb-tree">
+
+          <div class="tree-folder-row open" id="folder-root">
+            <span class="fold-arrow">▾</span>
+            <span class="fold-name">alex_metzger</span>
+          </div>
+
+          <div class="tree-children" id="children-root">
+
+            <div class="tree-item active" data-target="panel-home">
+              <span class="item-icon icon-me">◉</span>
+              <span class="item-name">about.me</span>
+              <span class="item-badge modified">M</span>
+            </div>
+
+            <div class="tree-folder-row open" id="folder-proj">
+              <span class="fold-arrow">▾</span>
+              <span class="fold-icon">📁</span>
+              <span class="fold-name">projects</span>
+            </div>
+            <div class="tree-children indent" id="children-proj">
+              <div class="tree-item" data-target="panel-projects" data-scroll="proj-01">
+                <span class="item-icon icon-py">⬟</span>
+                <span class="item-name">bert_threat.py</span>
+              </div>
+              <div class="tree-item" data-target="panel-projects" data-scroll="proj-02">
+                <span class="item-icon icon-py">⬟</span>
+                <span class="item-name">phish_clf.py</span>
+              </div>
+              <div class="tree-item" data-target="panel-projects" data-scroll="proj-03">
+                <span class="item-icon icon-py">⬟</span>
+                <span class="item-name">traffic_gan.py</span>
+              </div>
+              <div class="tree-item" data-target="panel-projects" data-scroll="proj-04">
+                <span class="item-icon icon-js">◆</span>
+                <span class="item-name">code_review.js</span>
+              </div>
+            </div>
+
+            <div class="tree-item" data-target="panel-skills">
+              <span class="item-icon icon-json">❴❵</span>
+              <span class="item-name">skills.json</span>
+            </div>
+
+            <div class="tree-item" data-target="panel-contact">
+              <span class="item-icon icon-sh">$</span>
+              <span class="item-name">contact.sh</span>
+            </div>
+
+            <div class="tree-item" onclick="window.open('resume.pdf','_blank')">
+              <span class="item-icon icon-pdf">▤</span>
+              <span class="item-name">resume.pdf</span>
+              <span class="item-badge new">↗</span>
+            </div>
+
+          </div><!-- /children-root -->
+        </div><!-- /sb-tree -->
+      </div>
+
+      <!-- Git panel -->
+      <div class="sb-section git-section">
+        <div class="sb-label">SOURCE CONTROL</div>
+        <div class="git-info">
+          <div class="git-branch">⎇&nbsp; main</div>
+          <div class="git-changes">
+            <span class="gc-file modified">M about.me</span>
+            <span class="gc-file new">U bert_threat.py</span>
+            <span class="gc-file new">U traffic_gan.py</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sb-footer">
+        <span class="sf-status"><span class="dot-green">●</span> ready</span>
+      </div>
+
+    </aside><!-- /sidebar -->
+
+    <!-- RIGHT CONTENT PANELS -->
+    <main id="panels">
+
+      <!-- ════════════════════
+           PANEL: HOME / ABOUT
+      ════════════════════ -->
+      <div class="panel active" id="panel-home">
+
+        <!-- Hero -->
+        <section class="hero">
+          <div class="hero-content">
+
+            <div class="hero-eyebrow">
+              <span class="status-dot"></span>
+              Available for opportunities · Denton, TX
+            </div>
+
+            <h1 class="hero-name">Alex<br/><em>Metzger.</em></h1>
+
+            <p class="hero-role">AI Software Developer &amp; Researcher</p>
+
+            <p class="hero-bio">
+              I build intelligent systems at the intersection of machine learning
+              and cybersecurity — creating models that are accurate, robust, and
+              explainable enough to trust in production. Currently a Research
+              Assistant at the <strong>University of North Texas</strong> AI for
+              Cybersecurity Lab.
+            </p>
+
+            <div class="hero-links">
+              <a href="#" class="btn-primary" data-target="panel-projects">View Projects</a>
+              <a href="AlexMetzgerResume-2025.pdf" target="_blank" class="btn-ghost">Download Résumé ↗</a>
+            </div>
+
+            <div class="hero-socials">
+              <a href="https://github.com/Metameg" target="_blank">GitHub</a>
+              <span>·</span>
+              <a href="https://www.linkedin.com/in/alex-metzger-699802233" target="_blank">LinkedIn</a>
+              <span>·</span>
+              <a href="mailto:ametzger08@gmail.com">Email</a>
+            </div>
+
+          </div>
+
+          <div class="hero-photo-col">
+            <div class="photo-frame">
+              <img
+                src="alex-pic.png"
+                alt="Alex Metzger"
+                id="profileImg"
+                onerror="this.style.display='none';document.getElementById('photoPH').style.display='flex';"
+              />
+              <div class="photo-placeholder" id="photoPH">
+                <span class="ph-mono">AM</span>
+                <span class="ph-hint">// add profile.jpg</span>
+              </div>
+              <div class="frame-corner tl"></div>
+              <div class="frame-corner tr"></div>
+              <div class="frame-corner bl"></div>
+              <div class="frame-corner br"></div>
+            </div>
+            <div class="photo-caption">
+              <span class="caption-chip">Research Assistant</span>
+              <span class="caption-chip accent">AI × Cybersecurity Lab</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- About deeper -->
+        <section class="about-section">
+          <div class="about-cols">
+            <div class="about-left">
+              <h2 class="section-title">Who I am.</h2>
+              <div class="stat-stack">
+                <div class="stat-item">
+                  <div class="stat-n">2+</div>
+                  <div class="stat-l">Years in AI Research</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-n">4</div>
+                  <div class="stat-l">Major Projects</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-n">UNT</div>
+                  <div class="stat-l">Research Institution</div>
+                </div>
+              </div>
+            </div>
+            <div class="about-right">
+              <p>
+                My work sits at a genuinely exciting frontier — applying deep learning, adversarial
+                machine learning, and generative models to problems that matter. At the UNT AI for
+                Cybersecurity Lab, I design and evaluate systems capable of detecting novel intrusions,
+                classifying malicious traffic, and generating synthetic datasets for training.
+              </p>
+              <p>
+                I care deeply about the gap between research and production. A model that works in a
+                notebook but can't be deployed, explained, or trusted under adversarial conditions
+                isn't really finished. That engineering rigor is what I bring to every project.
+              </p>
+              <p>
+                Outside the lab, I'm drawn to the ethical dimensions of autonomous systems, keeping
+                up with the ML literature, and building things that solve real problems.
+              </p>
+              <a href="AlexMetzgerResume-2025.pdf" target="_blank" class="text-link">Full Resume ↗</a>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /panel-home -->
+
+
+      <!-- ════════════════════
+           PANEL: PROJECTS
+      ════════════════════ -->
+      <div class="panel" id="panel-projects">
+
+        <div class="panel-header">
+          <h2 class="panel-title">Selected Work</h2>
+          <p class="panel-sub">A handful of things I've built. Each one is a real system, not a demo.</p>
+        </div>
+
+        <div class="projects-list">
+
+          <article class="proj" id="proj-01">
+            <div class="proj-meta">
+              <span class="proj-num">01</span>
+              <div class="proj-tags">
+                <span>Python</span><span>PyTorch</span><span>NLP</span><span>Transformers</span>
+              </div>
+            </div>
+            <div class="proj-body">
+              <h3>Adversarial Threat Detection via BERT</h3>
+              <p>
+                A fine-tuned BERT model trained on network log sequences to classify and flag
+                adversarial intrusion patterns with high recall. The central challenge was translating
+                raw network telemetry into token sequences a language model could reason about —
+                and then making those predictions interpretable. I integrated attention visualization
+                so security analysts can see exactly which events triggered a classification, not just
+                what the verdict was.
+              </p>
+              <div class="proj-links">
+                <a href="#" class="proj-link">View Project →</a>
+                <a href="#" class="proj-link">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj" id="proj-02">
+            <div class="proj-meta">
+              <span class="proj-num">02</span>
+              <div class="proj-tags">
+                <span>Python</span><span>Scikit-learn</span><span>Flask</span><span>REST API</span>
+              </div>
+            </div>
+            <div class="proj-body">
+              <h3>Phishing URL Classifier</h3>
+              <p>
+                An end-to-end ML pipeline that extracts lexical, structural, and domain-based
+                features from raw URLs and classifies phishing attempts in real time. I built
+                this as a production-ready system: the model is served via a Flask REST API,
+                paired with a lightweight analyst dashboard, and deployed with CI/CD through
+                GitHub Actions. It was designed to be fast enough for inline inspection.
+              </p>
+              <div class="proj-links">
+                <a href="#" class="proj-link">View Project →</a>
+                <a href="#" class="proj-link">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj" id="proj-03">
+            <div class="proj-meta">
+              <span class="proj-num">03</span>
+              <div class="proj-tags">
+                <span>TensorFlow</span><span>GANs</span><span>Python</span>
+              </div>
+            </div>
+            <div class="proj-body">
+              <h3>Synthetic Network Traffic Generator</h3>
+              <p>
+                One of the most persistent problems in cybersecurity ML is the scarcity of
+                labeled training data — organizations rarely want to share real incident logs.
+                I built a conditional GAN that generates statistically realistic synthetic network
+                flow records, conditioned on traffic class labels. The generated datasets have been
+                used to augment training for downstream anomaly detection models.
+              </p>
+              <div class="proj-links">
+                <a href="#" class="proj-link">View Project →</a>
+                <a href="#" class="proj-link">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj" id="proj-04">
+            <div class="proj-meta">
+              <span class="proj-num">04</span>
+              <div class="proj-tags">
+                <span>React</span><span>Node.js</span><span>OpenAI API</span>
+              </div>
+            </div>
+            <div class="proj-body">
+              <h3>AI-Powered Code Review Assistant</h3>
+              <p>
+                A developer tool that plugs into GitHub Pull Requests and uses LLM APIs to
+                analyze code diffs for security vulnerabilities, logic errors, and style
+                inconsistencies. Rather than surfacing noisy lint warnings, it provides
+                contextual, plain-language explanations of issues — closer to a thoughtful
+                colleague than a linter.
+              </p>
+              <div class="proj-links">
+                <a href="#" class="proj-link">View Project →</a>
+                <a href="#" class="proj-link">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div><!-- /panel-projects -->
+
+
+      <!-- ════════════════════
+           PANEL: SKILLS
+      ════════════════════ -->
+      <div class="panel" id="panel-skills">
+
+        <div class="panel-header">
+          <h2 class="panel-title">Skills &amp; Toolkit</h2>
+          <p class="panel-sub">Technologies and domains I work in regularly.</p>
+        </div>
+
+        <div class="skills-grid">
+
+          <div class="skill-block">
+            <div class="skill-block-label">Languages</div>
+            <ul>
+              <li>Python</li>
+              <li>JavaScript &amp; TypeScript</li>
+              <li>C++</li>
+              <li>SQL</li>
+              <li>Bash</li>
+            </ul>
+          </div>
+
+          <div class="skill-block highlight">
+            <div class="skill-block-label">AI &amp; Machine Learning</div>
+            <ul>
+              <li>PyTorch</li>
+              <li>TensorFlow</li>
+              <li>Scikit-learn</li>
+              <li>Hugging Face Transformers</li>
+              <li>LangChain</li>
+              <li>OpenAI API</li>
+            </ul>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-label">Web &amp; Backend</div>
+            <ul>
+              <li>React</li>
+              <li>Node.js</li>
+              <li>FastAPI &amp; Flask</li>
+              <li>PostgreSQL</li>
+              <li>Docker</li>
+            </ul>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-label">Research Focus</div>
+            <ul>
+              <li>Adversarial Machine Learning</li>
+              <li>Intrusion Detection Systems</li>
+              <li>Natural Language Processing</li>
+              <li>Generative Models &amp; GANs</li>
+              <li>Explainable AI</li>
+              <li>Network Security</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="currently-box">
+          <div class="cb-label">Currently</div>
+          <div class="cb-content">
+            <span>Research Assistant · University of North Texas</span>
+            <span class="cb-sep">—</span>
+            <span>Seeking full-time AI / ML engineering roles</span>
+          </div>
+        </div>
+
+      </div><!-- /panel-skills -->
+
+
+      <!-- ════════════════════
+           PANEL: CONTACT
+      ════════════════════ -->
+      <div class="panel" id="panel-contact">
+
+        <div class="contact-hero">
+          <h2 class="contact-heading">Let's build something<br/><em>worth building.</em></h2>
+          <p class="contact-sub">
+            Open to full-time roles, internships, and research collaborations.
+            I read every message — don't hesitate to reach out.
+          </p>
+        </div>
+
+        <div class="contact-links">
+
+          <a href="mailto:ametzger08@gmail.com" class="contact-row">
+            <div class="cr-left">
+              <span class="cr-type">Email</span>
+              <span class="cr-val">ametzger08@gmail.com</span>
+            </div>
+            <span class="cr-arrow">↗</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/alex-metzger-699802233" target="_blank" class="contact-row">
+            <div class="cr-left">
+              <span class="cr-type">LinkedIn</span>
+              <span class="cr-val">https://www.linkedin.com/in/alex-metzger-699802233</span>
+            </div>
+            <span class="cr-arrow">↗</span>
+          </a>
+
+          <a href="https://github.com/Metameg" target="_blank" class="contact-row">
+            <div class="cr-left">
+              <span class="cr-type">GitHub</span>
+              <span class="cr-val">github.com/Metameg</span>
+            </div>
+            <span class="cr-arrow">↗</span>
+          </a>
+
+          <a href="resume.pdf" target="_blank" class="contact-row">
+            <div class="cr-left">
+              <span class="cr-type">Résumé</span>
+              <span class="cr-val">Download PDF</span>
+            </div>
+            <span class="cr-arrow">↗</span>
+          </a>
+
+        </div>
+
+        <div class="contact-open-to">
+          <div class="cot-label">Open to</div>
+          <div class="cot-chips">
+            <span>Full-time AI / ML roles</span>
+            <span>Research collaborations</span>
+            <span>Software Developer roles</span>
+          </div>
+        </div>
+
+      </div><!-- /panel-contact -->
+
+    </main><!-- /panels -->
+  </div><!-- /workspace -->
+
+  <!-- ══════════════════════════════
+       MOBILE BOTTOM NAV (visible on small screens)
+  ══════════════════════════════ -->
+  <nav id="mobile-nav">
+    <button class="mnav-item active" data-target="panel-home">
+      <span class="mnav-icon">◉</span>
+      <span class="mnav-label">about.me</span>
+    </button>
+    <button class="mnav-item" data-target="panel-projects">
+      <span class="mnav-icon">◈</span>
+      <span class="mnav-label">projects/</span>
+    </button>
+    <button class="mnav-item" data-target="panel-skills">
+      <span class="mnav-icon">◇</span>
+      <span class="mnav-label">skills</span>
+    </button>
+    <button class="mnav-item" data-target="panel-contact">
+      <span class="mnav-icon">◎</span>
+      <span class="mnav-label">contact</span>
+    </button>
+    <a href="resume.pdf" target="_blank" class="mnav-item mnav-resume">
+      <span class="mnav-icon">↓</span>
+      <span class="mnav-label">résumé</span>
+    </a>
+  </nav>
+
+  <!-- ══════════════════════════════
+       IDE STATUS BAR
+  ══════════════════════════════ -->
+  <div id="statusbar">
+    <div class="sb-l">
+      <span class="sb-chip branch">⎇ main</span>
+      <span class="sb-chip">✓ 0 errors</span>
+      <span class="sb-chip warn">⚠ 1 warning: hire me</span>
+    </div>
+    <div class="sb-r">
+      <span class="sb-chip" id="sb-panel">about.me</span>
+      <span class="sb-chip">UTF-8</span>
+      <span class="sb-chip">© 2025 Alex Metzger</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
