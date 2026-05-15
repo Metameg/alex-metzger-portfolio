@@ -148,6 +148,28 @@ a { color: inherit; text-decoration: none; }
   border-left: 1px solid var(--ide-border);
 }
 
+.tb-social {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  padding: 0 8px;
+  border-left: 1px solid var(--ide-border);
+  flex-shrink: 0;
+}
+
+.tb-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--ide-text-dim);
+  border-radius: 3px;
+  transition: color 0.15s, background 0.15s;
+}
+.tb-icon-link:hover { color: var(--text-h); background: var(--ide-hover); }
+.tb-icon-link svg { display: block; flex-shrink: 0; }
+
 .resume-pill {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -294,6 +316,38 @@ a { color: inherit; text-decoration: none; }
 
 .sf-status { display: flex; align-items: center; gap: 6px; }
 .dot-green { color: var(--green-dot); font-size: 9px; }
+
+/* Sidebar GitHub stats */
+.gh-profile { padding: 4px 14px 10px; }
+
+.gh-profile-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  padding: 5px 0 8px;
+  border-bottom: 1px solid var(--ide-border);
+  margin-bottom: 8px;
+  transition: color 0.15s;
+  text-decoration: none;
+}
+.gh-profile-link:hover { color: var(--py-const); }
+.gh-profile-link .gh-arrow { margin-left: auto; opacity: 0.6; font-size: 11px; }
+
+.gh-stats { display: flex; flex-direction: column; gap: 3px; }
+
+.gh-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 0;
+}
+.gh-stat-label { color: var(--ide-text-dim); }
+.gh-stat-val   { color: var(--py-num); font-weight: 500; letter-spacing: 0.04em; }
 
 /* ============================================
    PANELS
@@ -658,7 +712,7 @@ a { color: inherit; text-decoration: none; }
 
 .proj {
   display: grid;
-  grid-template-columns: 90px 1fr;
+  grid-template-columns: 112px 1fr;
   gap: 0;
   border-bottom: 1px solid var(--panel-border);
   position: relative;
@@ -681,21 +735,22 @@ a { color: inherit; text-decoration: none; }
 
 .proj-num {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13px;
   color: var(--amber);
   letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
 .proj-tags {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 .proj-tags span {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 12px;
   color: var(--py-var);
-  white-space: nowrap;
+  line-height: 1.4;
 }
 
 .proj-body {
@@ -758,6 +813,41 @@ a { color: inherit; text-decoration: none; }
 .proj-link:hover {
   color: var(--py-const);
   text-decoration-color: var(--py-const);
+}
+
+/* GitHub stats section (skills panel) */
+.github-stats-section {
+  padding: 2.5rem 5rem;
+  background: var(--panel-bg2);
+  border-top: 1px solid var(--panel-border);
+}
+
+.gs-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.gs-cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.gs-card {
+  border-radius: 4px;
+  height: auto;
+  flex: 1;
+  min-width: 260px;
+  max-width: 100%;
+  display: block;
 }
 
 /* Live site badge */
@@ -862,6 +952,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--panel-bg);
 }
 
+.cb-label,
 .cot-label {
   font-family: var(--font-mono);
   font-size: 10.5px;

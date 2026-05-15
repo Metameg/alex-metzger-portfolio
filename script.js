@@ -227,6 +227,42 @@ treeItems.forEach(item => {
 });
 
 /* ============================================
+   GITHUB SIDEBAR STATS
+   Uses the free unauthenticated REST API (60 req/hr).
+   Falls back silently to "—" on error or rate limit.
+============================================ */
+async function fetchGitHubStats() {
+  try {
+    const [userRes, reposRes] = await Promise.all([
+      fetch('https://api.github.com/users/Metameg'),
+      fetch('https://api.github.com/users/Metameg/repos?per_page=100'),
+    ]);
+
+    if (!userRes.ok || !reposRes.ok) return;
+
+    const user  = await userRes.json();
+    const repos = await reposRes.json();
+
+    const stars = Array.isArray(repos)
+      ? repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0)
+      : 0;
+
+    const set = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    };
+
+    set('gh-repos',     user.public_repos ?? '—');
+    set('gh-stars',     stars || '—');
+    set('gh-followers', user.followers ?? '—');
+  } catch (_) {
+    // silently keep "—" placeholders
+  }
+}
+
+fetchGitHubStats();
+
+/* ============================================
    PHOTO — apply subtle filter on load
 ============================================ */
 const photo = document.getElementById('profileImg');
