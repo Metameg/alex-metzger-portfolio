@@ -33,24 +33,27 @@
   --text-b:        #a8b2cc;   /* body */
   --text-dim:      #9aacc2;   /* body paragraphs */
 
-  /* VS Code Python IntelliSense colors */
-  --py-fn:    #DCDCAA;   /* function/method — yellow */
-  --py-cls:   #4EC9B0;   /* class/type — teal */
-  --py-var:   #9CDCFE;   /* variable/param — light blue */
-  --py-kw:    #569CD6;   /* keyword — blue */
+  /* VS Code Python IntelliSense colors (from dark_vs.json + dark_plus.json) */
+  --py-fn:    #DCDCAA;   /* entity.name.function — yellow */
+  --py-cls:   #4EC9B0;   /* entity.name.class — teal */
+  --py-var:   #9CDCFE;   /* variable/parameter — light blue */
+  --py-kw:    #569CD6;   /* storage.type (def/class) — blue */
+  --py-ctrl:  #C586C0;   /* keyword.control (if/for/return/import) — purple */
   --py-str:   #CE9178;   /* string — orange */
-  --py-num:   #B5CEA8;   /* number — green */
+  --py-num:   #B5CEA8;   /* constant.numeric — light green */
+  --py-const: #4FC1FF;   /* variable.other.constant — bright blue */
+  --py-cmt:   #6A9955;   /* comment — muted green */
 
   --amber:         #f0a832;
   --amber-dim:     rgba(240,168,50,0.15);
-  --teal:          #4ecdc4;
-  --teal-dim:      rgba(78,205,196,0.12);
+  --teal:          #4EC9B0;   /* exact VS Code class/type teal */
+  --teal-dim:      rgba(78,201,176,0.12);
   --rose:          #f06292;
 
   /* Typography */
   --font-display: 'Fraunces', Georgia, serif;
   --font-body:    'Instrument Sans', system-ui, sans-serif;
-  --font-mono:    'Fira Code', 'Cascadia Code', monospace;
+  --font-mono:    'Fira Code', 'JetBrains Mono', 'Cascadia Code', 'Source Code Pro', monospace;
 
   /* Layout */
   --titlebar-h:  38px;
@@ -580,17 +583,17 @@ a { color: inherit; text-decoration: none; }
 }
 
 .stat-item { border-left: 2px solid var(--panel-border); padding-left: 1rem; }
-.stat-item:first-child { border-left-color: var(--amber); }
+.stat-item:first-child { border-left-color: var(--py-const); }
 
 .stat-n {
   font-family: var(--font-display);
   font-size: 2.2rem;
   font-weight: 700;
-  color: var(--text-h);
+  color: var(--py-num);
   line-height: 1;
   margin-bottom: 0.2rem;
 }
-.stat-item:first-child .stat-n { color: var(--amber); }
+.stat-item:first-child .stat-n { color: var(--py-const); }
 
 .stat-l {
   font-size: 0.8rem;
@@ -658,9 +661,14 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: 90px 1fr;
   gap: 0;
   border-bottom: 1px solid var(--panel-border);
-  transition: background 0.2s;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
 }
-.proj:hover { background: rgba(255,255,255,0.015); }
+.proj:hover {
+  background: rgba(91,163,245,0.04);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
 
 .proj-meta {
   padding: 2.5rem 1.5rem 2.5rem 0.5rem;
@@ -698,10 +706,26 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--text-h);
   letter-spacing: -0.01em;
   margin-bottom: 1rem;
   line-height: 1.2;
+}
+
+/* Full-card link overlay via title anchor */
+.proj-title-link {
+  color: var(--text-h);
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s;
+}
+.proj-title-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.proj:hover .proj-title-link {
+  color: var(--py-fn);
 }
 
 .proj-body p {
@@ -712,16 +736,67 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 1.5rem;
 }
 
-.proj-links { display: flex; gap: 1.5rem; }
+.proj-links {
+  display: flex;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
 .proj-link {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--ide-text-dim);
-  transition: color 0.2s;
+  color: var(--py-kw);
   letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-decoration-color: rgba(86, 156, 214, 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
 }
-.proj-link:hover { color: var(--accent); }
+.proj-link:hover {
+  color: var(--py-const);
+  text-decoration-color: var(--py-const);
+}
+
+/* Live site badge */
+.proj-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--green-dot);
+  background: rgba(76, 175, 125, 0.07);
+  border: 1px solid rgba(76, 175, 125, 0.22);
+  border-radius: 3px;
+  padding: 5px 12px;
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.04em;
+  width: fit-content;
+}
+.proj-live-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--green-dot);
+  border-radius: 50%;
+  box-shadow: 0 0 7px var(--green-dot);
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.proj-live-url {
+  color: var(--py-str);
+  text-decoration: underline;
+  text-decoration-color: rgba(206, 145, 120, 0.35);
+  text-underline-offset: 2px;
+}
+.proj-live-sep {
+  color: var(--ide-text-muted);
+  user-select: none;
+}
 
 /* ============================================
    PANEL: SKILLS
@@ -792,7 +867,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 10.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ide-text-muted);
+  color: var(--py-ctrl);
   flex-shrink: 0;
 }
 
@@ -1032,12 +1107,15 @@ a { color: inherit; text-decoration: none; }
 /* ============================================
    PYTHON INTELLISENSE EMPHASIS UTILITIES
 ============================================ */
-.py-fn  { color: var(--py-fn); }
-.py-cls { color: var(--py-cls); }
-.py-var { color: var(--py-var); }
-.py-kw  { color: var(--py-kw); }
-.py-str { color: var(--py-str); }
-.py-num { color: var(--py-num); }
+.py-fn    { color: var(--py-fn); }
+.py-cls   { color: var(--py-cls); }
+.py-var   { color: var(--py-var); }
+.py-kw    { color: var(--py-kw); }
+.py-ctrl  { color: var(--py-ctrl); }
+.py-str   { color: var(--py-str); }
+.py-num   { color: var(--py-num); }
+.py-const { color: var(--py-const); }
+.py-cmt   { color: var(--py-cmt); }
 
 /* ============================================
    RESPONSIVE
