@@ -131,18 +131,10 @@
             <span>Metameg</span>
             <span class="gh-arrow">↗</span>
           </a>
-          <div class="gh-stats">
-            <div class="gh-stat-row">
-              <span class="gh-stat-label">repos</span>
-              <span class="gh-stat-val" id="gh-repos">—</span>
-            </div>
-            <div class="gh-stat-row">
-              <span class="gh-stat-label">stars</span>
-              <span class="gh-stat-val" id="gh-stars">—</span>
-            </div>
-            <div class="gh-stat-row">
-              <span class="gh-stat-label">followers</span>
-              <span class="gh-stat-val" id="gh-followers">—</span>
+          <div class="gh-repos">
+            <div class="gh-repos-label">recent</div>
+            <div class="gh-repos-list" id="gh-repos-list">
+              <div class="gh-repo-placeholder">loading…</div>
             </div>
           </div>
         </div>
@@ -168,7 +160,7 @@
 
             <div class="hero-eyebrow">
               <span class="status-dot"></span>
-              Available for opportunities · Houston, TX
+              Available for opportunities · Denton, TX
             </div>
 
             <h1 class="hero-name">Alex<br/><em>Metzger.</em></h1>
@@ -194,6 +186,8 @@
               <a href="https://www.linkedin.com/in/alex-metzger-699802233" target="_blank">LinkedIn</a>
               <span>·</span>
               <a href="mailto:ametzger08@gmail.com">Email</a>
+              <span>·</span>
+              <a href="tel:+15758059738" class="hero-phone">575-805-9738</a>
             </div>
 
           </div>
@@ -412,6 +406,44 @@
           <p class="panel-sub">Technologies and domains I work in regularly.</p>
         </div>
 
+        <div class="github-stats-section">
+          <div class="gs-label">GitHub Activity · Metameg</div>
+          <div class="gs-cards">
+
+            <div class="gs-card">
+              <div class="gs-card-header">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                <span class="gs-card-title">Profile · @Metameg</span>
+              </div>
+              <div class="gs-stat-grid">
+                <div class="gs-stat"><span class="gs-stat-n" id="gs-repos">—</span><span class="gs-stat-lbl">public repos</span></div>
+                <div class="gs-stat"><span class="gs-stat-n" id="gs-lastpush">—</span><span class="gs-stat-lbl">last push</span></div>
+                <div class="gs-stat"><span class="gs-stat-n" id="gs-followers">—</span><span class="gs-stat-lbl">followers</span></div>
+                <div class="gs-stat"><span class="gs-stat-n" id="gs-active">—</span><span class="gs-stat-lbl">active this yr</span></div>
+              </div>
+              <div class="gs-card-foot">
+                <span class="gs-foot-lbl">on github since</span>
+                <span class="gs-foot-val" id="gs-since">—</span>
+              </div>
+            </div>
+
+            <div class="gs-card">
+              <div class="gs-card-header">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M2 2h12v2H2V2zm0 4h12v2H2V6zm0 4h7v2H2v-2z"/>
+                </svg>
+                <span class="gs-card-title">Top Languages</span>
+              </div>
+              <div class="gs-langs" id="gs-langs">
+                <div class="gs-lang-placeholder">loading…</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         <div class="skills-grid">
 
           <div class="skill-block">
@@ -472,24 +504,6 @@
           </div>
         </div>
 
-        <div class="github-stats-section">
-          <div class="gs-label">GitHub Activity · Metameg</div>
-          <div class="gs-cards">
-            <img
-              src="https://github-readme-stats.vercel.app/api?username=Metameg&show_icons=true&bg_color=13161f&border_color=252a3a&title_color=9CDCFE&text_color=9aacc2&icon_color=4EC9B0&border_radius=4&hide_border=false"
-              alt="GitHub Stats"
-              class="gs-card"
-              loading="lazy"
-            />
-            <img
-              src="https://github-readme-stats.vercel.app/api/top-langs/?username=Metameg&layout=compact&bg_color=13161f&border_color=252a3a&title_color=9CDCFE&text_color=9aacc2&border_radius=4&hide_border=false"
-              alt="Top Languages"
-              class="gs-card"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
       </div><!-- /panel-skills -->
 
 
@@ -506,12 +520,81 @@
           </p>
         </div>
 
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="cf-header">
+            <span class="cf-prompt">$</span>
+            <span class="cf-prompt-cmd">./send_message.sh</span>
+          </div>
+
+          <div class="cf-row cf-row-2">
+            <div class="cf-field">
+              <label for="cf-first">First name</label>
+              <input id="cf-first" name="first_name" type="text" required autocomplete="given-name" maxlength="60"/>
+              <span class="cf-err" data-field="first_name"></span>
+            </div>
+            <div class="cf-field">
+              <label for="cf-last">Last name</label>
+              <input id="cf-last" name="last_name" type="text" required autocomplete="family-name" maxlength="60"/>
+              <span class="cf-err" data-field="last_name"></span>
+            </div>
+          </div>
+
+          <div class="cf-field">
+            <label for="cf-company">Company <span class="cf-optional"># optional</span></label>
+            <input id="cf-company" name="company" type="text" autocomplete="organization" maxlength="120"/>
+          </div>
+
+          <div class="cf-row cf-row-2">
+            <div class="cf-field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" required autocomplete="email" maxlength="120"/>
+              <span class="cf-err" data-field="email"></span>
+            </div>
+            <div class="cf-field">
+              <label for="cf-phone">Phone <span class="cf-optional"># optional</span></label>
+              <input id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" maxlength="12" placeholder="555-555-5555"/>
+              <span class="cf-err" data-field="phone"></span>
+            </div>
+          </div>
+
+          <div class="cf-field">
+            <label for="cf-message">
+              Message
+              <span class="cf-meta"><span id="cf-msg-count">0</span> / 10 min</span>
+            </label>
+            <textarea id="cf-message" name="message" rows="6" required minlength="10" maxlength="4000"></textarea>
+            <span class="cf-err" data-field="message"></span>
+          </div>
+
+          <!-- honeypot: bots fill this; humans don't see it -->
+          <div class="cf-honey" aria-hidden="true">
+            <label for="cf-website">Website (leave empty)</label>
+            <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off"/>
+          </div>
+
+          <div class="cf-actions">
+            <button type="submit" class="cf-submit">
+              <span class="cf-submit-arrow">▸</span>
+              <span class="cf-submit-text">send_message</span>
+            </button>
+            <div class="cf-status" id="cf-status" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+
         <div class="contact-links">
 
           <a href="mailto:ametzger08@gmail.com" class="contact-row">
             <div class="cr-left">
               <span class="cr-type">Email</span>
               <span class="cr-val">ametzger08@gmail.com</span>
+            </div>
+            <span class="cr-arrow">↗</span>
+          </a>
+
+          <a href="tel:+15758059738" class="contact-row">
+            <div class="cr-left">
+              <span class="cr-type">Phone</span>
+              <span class="cr-val">575-805-9738</span>
             </div>
             <span class="cr-arrow">↗</span>
           </a>

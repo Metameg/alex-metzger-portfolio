@@ -2,3 +2,6 @@
 Thumbs.db
 *.swp
 *.swo
+
+# Mailer secrets — keep the .example committed, ignore the real one
+/config/mailer.config.php
