@@ -270,6 +270,7 @@
 
             <div class="hero-links">
               <a href="#panel-projects" class="btn-primary" data-target="panel-projects">View Projects</a>
+              <a href="#panel-publications" class="btn-ghost-amber" data-target="panel-publications">★ Publications</a>
               <a href="AlexMetzgerResume-2026.pdf" target="_blank" rel="noopener" class="btn-ghost">Download Résumé ↗</a>
             </div>
 
@@ -374,7 +375,7 @@
 
           <div class="pub-beacon-papers">
 
-            <div class="pub-beacon-paper" data-target="panel-publications" data-scroll="pub-01" role="button" tabindex="0" aria-label="View paper 1 in publications panel">
+            <a class="pub-beacon-paper" href="https://doi.org/10.1109/CogMI67134.2025.00027" target="_blank" rel="noopener" aria-label="Read paper: Dependence Minimization for Multi-Label Classification (opens IEEE Xplore)">
               <div class="pub-beacon-bar pub-beacon-bar-1" aria-hidden="true"></div>
               <div class="pub-beacon-paper-inner">
                 <div class="pub-beacon-paper-meta">
@@ -384,9 +385,9 @@
                 <div class="pub-beacon-title">Dependence Minimization for Multi-Label Classification: An Alternative to Human Labeling</div>
                 <div class="pub-beacon-doi">↗ DOI: 10.1109/CogMI67134.2025.00027</div>
               </div>
-            </div>
+            </a>
 
-            <div class="pub-beacon-paper" data-target="panel-publications" data-scroll="pub-02" role="button" tabindex="0" aria-label="View paper 2 in publications panel">
+            <a class="pub-beacon-paper" href="https://doi.org/10.1109/CogMI67134.2025.00039" target="_blank" rel="noopener" aria-label="Read paper: Prompts and Thoughts: Can Your Cyber Curriculum Meet the Job Skills (opens IEEE Xplore)">
               <div class="pub-beacon-bar pub-beacon-bar-2" aria-hidden="true"></div>
               <div class="pub-beacon-paper-inner">
                 <div class="pub-beacon-paper-meta">
@@ -396,7 +397,7 @@
                 <div class="pub-beacon-title">Prompts and Thoughts: Can Your Cyber Curriculum Meet the Job Skills</div>
                 <div class="pub-beacon-doi">↗ DOI: 10.1109/CogMI67134.2025.00039</div>
               </div>
-            </div>
+            </a>
 
             <div class="pub-beacon-paper" data-target="panel-publications" data-scroll="pub-03" role="button" tabindex="0" aria-label="View paper 3 in publications panel">
               <div class="pub-beacon-bar pub-beacon-bar-3" aria-hidden="true"></div>
@@ -414,7 +415,7 @@
 
           <div class="pub-beacon-footer">
             <button class="pub-beacon-all" data-target="panel-publications" aria-label="Open publications panel">→ View all publications</button>
-            <span class="pub-beacon-note">// 2 IEEE · 1 IntelliSys · 1 pending</span>
+            <span class="pub-beacon-note">// 2 IEEE · 1 pending</span>
           </div>
         </section>
 
@@ -815,7 +816,7 @@
                 <span class="pub-venue-chip">CogMI 2025</span>
                 <span class="pub-venue-loc">Pittsburgh, PA</span>
               </div>
-              <h3 class="pub-annot-title">Dependence Minimization for Multi-Label Classification: An Alternative to Human Labeling</h3>
+              <h3 class="pub-annot-title"><a class="pub-annot-title-link" href="https://doi.org/10.1109/CogMI67134.2025.00027" target="_blank" rel="noopener">Dependence Minimization for Multi-Label Classification: An Alternative to Human Labeling</a></h3>
               <p class="pub-annot-abstract">We propose a dependence minimization framework that eliminates the need for manual human-annotated label co-occurrence data in multi-label classification. By leveraging statistical independence criteria applied directly to observed label distributions, the method learns inter-label relationships from raw co-occurrence structure — reducing annotation cost while preserving classification performance across benchmark datasets.</p>
               <div class="pub-annot-links">
                 <a href="https://doi.org/10.1109/CogMI67134.2025.00027" target="_blank" rel="noopener" class="pub-doi-link">DOI: 10.1109/CogMI67134.2025.00027 ↗</a>
@@ -834,7 +835,7 @@
                 <span class="pub-venue-chip">CogMI 2025</span>
                 <span class="pub-venue-loc">Pittsburgh, PA</span>
               </div>
-              <h3 class="pub-annot-title">Prompts and Thoughts: Can Your Cyber Curriculum Meet the Job Skills</h3>
+              <h3 class="pub-annot-title"><a class="pub-annot-title-link" href="https://doi.org/10.1109/CogMI67134.2025.00039" target="_blank" rel="noopener">Prompts and Thoughts: Can Your Cyber Curriculum Meet the Job Skills</a></h3>
               <p class="pub-annot-abstract">We benchmark current cybersecurity degree curricula against real-world LLM-era job postings using prompt engineering techniques applied to large language models. Our analysis identifies critical skill gaps between what programs teach and what employers now demand — particularly in AI-assisted threat analysis, prompt-injection awareness, and model security — offering actionable recommendations for curriculum modernization.</p>
               <div class="pub-annot-links">
                 <a href="https://doi.org/10.1109/CogMI67134.2025.00039" target="_blank" rel="noopener" class="pub-doi-link">DOI: 10.1109/CogMI67134.2025.00039 ↗</a>
@@ -854,7 +855,7 @@
                 <span class="pub-venue-loc">Amsterdam, Netherlands</span>
               </div>
               <h3 class="pub-annot-title">Task-Aligned Contrastive Learning for Filtering Noise in Multi-Label Text Classification</h3>
-              <p class="pub-annot-abstract">We introduce a contrastive learning framework that ties representation learning directly to downstream task objectives, enabling a model to distinguish clean signal from label noise in multi-label text classification without requiring clean supervision. Experiments across noisy benchmark datasets demonstrate consistent gains in precision and recall compared to noise-agnostic baselines and prior denoising approaches.</p>
+              <p class="pub-annot-abstract">Proposes an unsupervised contrastive fine-tuning approach applied to an LLM's embedding layer to restructure representational space — maximizing the distance between semantically relevant and noisy text segments before downstream multi-label classification. Applied to a 27-label dataset of highly unstructured academic assessments, results show that while absolute F1 performance did not consistently improve, contrastive fine-tuning notably increased the correlation between mutual information and F1-scores, suggesting the method enhances LLM interpretability by making MI a more reliable predictor of classification performance in high-noise environments.</p>
               <div class="pub-annot-links">
                 <span class="pub-doi-pending">// pending DOI — IntelliSys 2026</span>
               </div>
