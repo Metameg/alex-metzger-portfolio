@@ -8,10 +8,11 @@ const mnavItems  = document.querySelectorAll('.mnav-item[data-target]');
 const sbPanel    = document.getElementById('sb-panel');
 
 const tabNames = {
-  'panel-home':     'about.me',
-  'panel-projects': 'projects/',
-  'panel-skills':   'skills.json',
-  'panel-contact':  'contact.sh',
+  'panel-home':         'about.me',
+  'panel-projects':     'projects/',
+  'panel-publications': 'publications/',
+  'panel-skills':       'skills.json',
+  'panel-contact':      'contact.sh',
 };
 
 function switchToPanel(targetId, scrollToId = null) {
@@ -31,7 +32,12 @@ function switchToPanel(targetId, scrollToId = null) {
   }
 
   // Sync: title bar tabs
-  tabs.forEach(t => t.classList.toggle('active', t.dataset.target === targetId));
+  tabs.forEach(t => {
+    const isActive = t.dataset.target === targetId;
+    t.classList.toggle('active', isActive);
+    if (isActive) t.setAttribute('aria-current', 'page');
+    else t.removeAttribute('aria-current');
+  });
 
   // Sync: sidebar tree
   treeItems.forEach(item => {
@@ -40,7 +46,10 @@ function switchToPanel(targetId, scrollToId = null) {
 
   // Sync: mobile bottom nav
   mnavItems.forEach(item => {
-    item.classList.toggle('active', item.dataset.target === targetId);
+    const isActive = item.dataset.target === targetId;
+    item.classList.toggle('active', isActive);
+    if (isActive) item.setAttribute('aria-current', 'page');
+    else item.removeAttribute('aria-current');
   });
 
   // Sync: status bar label
@@ -69,8 +78,17 @@ document.querySelectorAll('[data-target]').forEach(el => {
   if (el.classList.contains('tab') || el.classList.contains('tree-item')) return;
   el.addEventListener('click', (e) => {
     e.preventDefault();
-    switchToPanel(el.dataset.target);
+    switchToPanel(el.dataset.target, el.dataset.scroll || null);
   });
+  // keyboard activation for role="button" elements
+  if (el.getAttribute('role') === 'button') {
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        switchToPanel(el.dataset.target, el.dataset.scroll || null);
+      }
+    });
+  }
 });
 
 /* ============================================
@@ -111,8 +129,9 @@ panels.forEach(panel => {
 const shortcuts = {
   '1': 'panel-home',
   '2': 'panel-projects',
-  '3': 'panel-skills',
-  '4': 'panel-contact',
+  '3': 'panel-publications',
+  '4': 'panel-skills',
+  '5': 'panel-contact',
 };
 
 document.addEventListener('keydown', e => {
@@ -174,7 +193,7 @@ function setupReveal(panelId) {
   const panel = document.getElementById(panelId);
   if (!panel) return;
 
-  const items = panel.querySelectorAll('.proj, .skill-block, .contact-row, .stat-item');
+  const items = panel.querySelectorAll('.proj, .skill-block, .contact-row, .stat-item, .pub-annot-entry, .pub-beacon-paper');
   items.forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(16px)';
@@ -205,7 +224,7 @@ function setupReveal(panelId) {
   }, 100);
 }
 
-['panel-home', 'panel-projects', 'panel-skills', 'panel-contact'].forEach(setupReveal);
+['panel-home', 'panel-projects', 'panel-publications', 'panel-skills', 'panel-contact'].forEach(setupReveal);
 
 // Re-trigger reveals when switching panels
 [...tabs, ...mnavItems].forEach(btn => {
@@ -458,9 +477,10 @@ fetchGitHubStats();
 })();
 
 /* ============================================
-   PHOTO — apply subtle filter on load
+   PHOTO — apply subtle filter on load, fall back to placeholder on error
 ============================================ */
 const photo = document.getElementById('profileImg');
+const photoPH = document.getElementById('photoPH');
 if (photo) {
   const applyFilter = () => {
     if (photo.naturalWidth > 0) {
@@ -468,5 +488,9 @@ if (photo) {
     }
   };
   photo.addEventListener('load', applyFilter);
+  photo.addEventListener('error', () => {
+    photo.style.display = 'none';
+    if (photoPH) photoPH.style.display = 'flex';
+  });
   if (photo.complete) applyFilter();
 }
